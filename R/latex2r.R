@@ -1,4 +1,4 @@
-#' Translate LaTeX formula to R code.
+#' Translate LaTeX formula to R code (standardMath).
 #'
 #' Take a LaTeX formula and attempts to find an equivalent representation in R.
 #' If `interactive=TRUE` it pops up an interactive REPL that does the same, but interactively.
@@ -27,7 +27,7 @@ latex2r <- function(l) {
      ||grepl("--", latex_no_spaced,fixed = TRUE) == TRUE
      ||grepl("-+", latex_no_spaced,fixed = TRUE) == TRUE
      ||grepl(",,", latex_no_spaced,fixed = TRUE) == TRUE) {
-    return("syntax error")
+      return("syntax error")
   }
   latex <- gsub("\\cdot", "*", l, fixed = TRUE)
   latex <- gsub("\\left[", "\\leftsquare", latex, fixed = TRUE)
