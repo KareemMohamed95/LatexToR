@@ -35,7 +35,7 @@ GREEK_KEYWORDS = paste0("\\", c(
   "mu", "sigma", "psi", "zeta", "nu", "varsigma", "omega", "eta",
   "xi", "Gamma", "Lambda", "Sigma", "Psi", "Delta", "Xi",
   "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "circ", "degree",
-  "infty", "leftsquare", "rightsquare"
+  "infty", "leftsquare", "rightsquare", "abs"
 ))
 
 # TODO: Add \div operator, which is like a regular binary.

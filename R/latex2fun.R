@@ -14,7 +14,8 @@ is_function2 = function(x) {
     "varphi", "epsilon", "lambda", "varrho", "chi", "varepsilon",
     "mu", "sigma", "psi", "zeta", "nu", "varsigma", "omega", "eta",
     "xi", "Gamma", "Lambda", "Sigma", "Psi", "Delta", "Xi",
-    "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "leftsquare", "rightsquare"
+    "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "leftsquare", "rightsquare",
+    "abs"
   )
   x_chr = as.character(x)
   if (tolower(x_chr) %in% letters) return(FALSE)
