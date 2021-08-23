@@ -50,7 +50,6 @@ latex2r <- function(l) {
 
 #' @export
 r2latex <- function(r) { 
-  
   str2 <- Ryacas::yac_str(paste0("TexForm(", r, ")"))
   str2 <- gsub("$", "", str2, fixed = TRUE)
   str2 <- gsub("\n", "", str2, fixed = TRUE)
