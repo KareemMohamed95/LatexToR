@@ -1,4 +1,4 @@
-# Obtain the AST of an R expression (or something like that).
+# Obtain the AST of an R expression (or something like that..).
 get_ast = function(arg) purrr::map_if(as.list(arg), is.call, get_ast)
 
 # If exists, get the object. Otherwise, return NULL.
