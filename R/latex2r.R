@@ -97,6 +97,12 @@ reverse_abs <- function(str) {
 restore_log <- function(str) {
   str <- gsub("log * ", "log", str, fixed = TRUE)
   str <- gsub("loge * ", "loge", str, fixed = TRUE)
+  str <- gsub("loga * ", "loga", str, fixed = TRUE)
+  str <- gsub("logb * ", "logb", str, fixed = TRUE)
+  str <- gsub("logc * ", "logc", str, fixed = TRUE)
+  str <- gsub("logx * ", "logx", str, fixed = TRUE)
+  str <- gsub("logy * ", "logy", str, fixed = TRUE)
+  str <- gsub("logz * ", "logz", str, fixed = TRUE)
   for(i in 1:100) {
     temp_str <- paste0("log",toString(i))
     str <- gsub(paste0(temp_str, " * "), temp_str, str, fixed = TRUE)
