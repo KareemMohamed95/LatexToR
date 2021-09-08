@@ -44,7 +44,8 @@ GREEK_KEYWORDS = paste0("\\", c(
   "xi", "Gamma", "Lambda", "Sigma", "Psi", "Delta", "Xi",
   "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "circ", "degree",
   "infty", "leftsquare", "rightsquare", "abs",
-  "log", "loge", get_log_numbers(100)
+  "log", "loge", "loga", "logb", "logc", "logx", "logy", "logz",
+  get_log_numbers(100)
 ))
 
 # TODO: Add \div operator, which is like a regular binary.

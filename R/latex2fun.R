@@ -24,7 +24,8 @@ is_function2 = function(x) {
     "xi", "Gamma", "Lambda", "Sigma", "Psi", "Delta", "Xi",
     "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "leftsquare", "rightsquare",
     "abs",
-    "log", "loge", get_log_numbers(100)
+    "log", "loge", "loga", "logb", "logc", "logx", "logy", "logz",
+    get_log_numbers(100)
   )
   x_chr = as.character(x)
   if (tolower(x_chr) %in% letters) return(FALSE)
