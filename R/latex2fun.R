@@ -7,6 +7,14 @@ get2 = function(x) {
   return(NULL)
 }
 
+get_log_numbers = function(range) {
+  logs <- c()
+  for(i in 1:range) {
+    logs <- c(logs, paste0("log", toString(i)))
+  }
+  return(logs)
+}
+
 is_function2 = function(x) {
   greek_letters = c(
     "alpha", "theta", "tau", "beta", "vartheta", "pi", "upsilon",
@@ -15,7 +23,8 @@ is_function2 = function(x) {
     "mu", "sigma", "psi", "zeta", "nu", "varsigma", "omega", "eta",
     "xi", "Gamma", "Lambda", "Sigma", "Psi", "Delta", "Xi",
     "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "leftsquare", "rightsquare",
-    "abs"
+    "abs",
+    "log", "loge", get_log_numbers(100)
   )
   x_chr = as.character(x)
   if (tolower(x_chr) %in% letters) return(FALSE)

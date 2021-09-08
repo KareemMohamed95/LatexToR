@@ -27,6 +27,14 @@ stop_custom = function(.subclass, message, call = NULL, ...) {
   stop(err)
 }
 
+get_log_numbers = function(range) {
+  logs <- c()
+  for(i in 1:range) {
+    logs <- c(logs, paste0("log", toString(i)))
+  }
+  return(logs)
+}
+
 # Data
 GREEK_KEYWORDS = paste0("\\", c(
   "alpha", "theta", "tau", "beta", "vartheta", "pi", "upsilon",
@@ -35,7 +43,8 @@ GREEK_KEYWORDS = paste0("\\", c(
   "mu", "sigma", "psi", "zeta", "nu", "varsigma", "omega", "eta",
   "xi", "Gamma", "Lambda", "Sigma", "Psi", "Delta", "Xi",
   "Upsilon", "Omega", "Theta", "Pi", "Phi", "phi", "circ", "degree",
-  "infty", "leftsquare", "rightsquare", "abs"
+  "infty", "leftsquare", "rightsquare", "abs",
+  "log", "loge", get_log_numbers(100)
 ))
 
 # TODO: Add \div operator, which is like a regular binary.

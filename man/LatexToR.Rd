@@ -2,7 +2,7 @@
 % Please edit documentation in R/latex2r.R
 \name{LatexToR}
 \alias{LatexToR}
-\title{Translate LaTeX formula to R code.}
+\title{Translate LaTeX formula to R code (standardMath).}
 \usage{
 LatexToR(x, interactive = FALSE)
 }
@@ -15,7 +15,7 @@ LatexToR(x, interactive = FALSE)
 string
 }
 \description{
-Take a LaTeX formula and attempts to find an  equivalent representation in R.
+Take a LaTeX formula and attempts to find an equivalent representation in R.
 If \code{interactive=TRUE} it pops up an interactive REPL that does the same, but interactively.
 }
 \examples{
