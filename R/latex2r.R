@@ -24,9 +24,9 @@ latex2r <- function(l) {
   latex_no_spaced <- gsub(" ", "", l, fixed = TRUE)
   if(grepl("++", latex_no_spaced, fixed = TRUE) == TRUE
      ||grepl("+-", latex_no_spaced, fixed = TRUE) == TRUE
-     ||grepl("--", latex_no_spaced,fixed = TRUE) == TRUE
-     ||grepl("-+", latex_no_spaced,fixed = TRUE) == TRUE
-     ||grepl(",,", latex_no_spaced,fixed = TRUE) == TRUE) {
+     ||grepl("--", latex_no_spaced, fixed = TRUE) == TRUE
+     ||grepl("-+", latex_no_spaced, fixed = TRUE) == TRUE
+     ||grepl(",,", latex_no_spaced, fixed = TRUE) == TRUE) {
       return("syntax error")
   }
   latex <- gsub("\\cdot", "*", l, fixed = TRUE)
