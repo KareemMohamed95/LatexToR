@@ -22,8 +22,8 @@ LatexToR = function(x, interactive = FALSE) {
 #' @export
 latex2r <- function(l) {
   latex_no_spaced <- gsub(" ", "", l, fixed = TRUE)
-  if(grepl("++", latex_no_spaced,fixed = TRUE) == TRUE
-     ||grepl("+-", latex_no_spaced,fixed = TRUE) == TRUE
+  if(grepl("++", latex_no_spaced, fixed = TRUE) == TRUE
+     ||grepl("+-", latex_no_spaced, fixed = TRUE) == TRUE
      ||grepl("--", latex_no_spaced,fixed = TRUE) == TRUE
      ||grepl("-+", latex_no_spaced,fixed = TRUE) == TRUE
      ||grepl(",,", latex_no_spaced,fixed = TRUE) == TRUE) {
@@ -34,6 +34,7 @@ latex2r <- function(l) {
   latex <- gsub("[", "\\leftsquare", latex, fixed = TRUE)
   latex <- gsub("\\right]", "\\rightsquare", latex, fixed = TRUE)
   latex <- gsub("]", "\\rightsquare", latex, fixed = TRUE)
+  latex <- handle_exp_powers(latex)
   latex <- replace_abs(latex)
   if(latex == "syntax error")return(latex)
   
@@ -65,7 +66,7 @@ replace_abs <- function(str) {
   str <- gsub("\\mid", "|", str, fixed = TRUE)
   str <- gsub("\\left|", "|", str, fixed = TRUE)
   str <- gsub("\\right|", "|", str, fixed = TRUE)
-  str <- strsplit(str,"")[[1]]
+  str <- strsplit(str, "")[[1]]
   str2 <- ""
   for(i in 1:length(str)) {
     if(str[[i]] == "|") {
@@ -108,6 +109,24 @@ restore_log <- function(str) {
     str <- gsub(paste0(temp_str, " * "), temp_str, str, fixed = TRUE)
   }
   return(str)
+}
+
+#' @export
+handle_exp_powers <- function(str) {
+  str <- strsplit(str, "")[[1]]
+  final_str <- ""
+  i <- 1
+  while(i <= length(str)) {
+    if(str[[i]] == "e" && i+1 <= length(str) && i+2 <= length(str) && str[[i+1]] == "^" && str[[i+2]] != "{") {
+      final_str = paste0(final_str, "e^{", str[[i+2]], "}")
+      i <- i+3
+    }
+    else  {
+      final_str <- paste0(final_str,  str[[i]])
+      i <- i+1
+    }
+  }
+  return(final_str)
 }
 
 #' @export
