@@ -34,6 +34,7 @@ latex2r <- function(l) {
   latex <- gsub("[", "\\leftsquare", latex, fixed = TRUE)
   latex <- gsub("\\right]", "\\rightsquare", latex, fixed = TRUE)
   latex <- gsub("]", "\\rightsquare", latex, fixed = TRUE)
+  latex <- handle_trig_functions(latex)
   latex <- handle_exp_powers(latex)
   latex <- replace_abs(latex)
   if(latex == "syntax error")return(latex)
@@ -127,6 +128,23 @@ handle_exp_powers <- function(str) {
     }
   }
   return(final_str)
+}
+
+#' @export
+handle_trig_functions <- function(str) {
+  str <- gsub("\\sin", "sin", str, fixed = TRUE)
+  str <- gsub("\\cos", "cos", str, fixed = TRUE)
+  str <- gsub("\\tan", "tan", str, fixed = TRUE)
+  str <- gsub("\\csc", "csc", str, fixed = TRUE)
+  str <- gsub("\\sec", "sec", str, fixed = TRUE)
+  str <- gsub("\\cot", "cot", str, fixed = TRUE)
+  
+  str <- gsub("sin", "\\sin", str, fixed = TRUE)
+  str <- gsub("cos", "\\cos", str, fixed = TRUE)
+  str <- gsub("tan", "\\tan", str, fixed = TRUE)
+  str <- gsub("csc", "\\csc", str, fixed = TRUE)
+  str <- gsub("sec", "\\sec", str, fixed = TRUE)
+  str <- gsub("cot", "\\cot", str, fixed = TRUE)
 }
 
 #' @export

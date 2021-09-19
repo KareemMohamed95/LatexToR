@@ -2,6 +2,7 @@
 
 export(LatexToR)
 export(handle_exp_powers)
+export(handle_trig_functions)
 export(latex2fun)
 export(latex2r)
 export(r2latex)
