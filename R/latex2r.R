@@ -38,9 +38,12 @@ latex2r <- function(l) {
   latex <- handle_exp_powers(latex)
   latex <- replace_abs(latex)
   if(latex == "syntax error")return(latex)
-  
+  first_pm <- handle_first_pm(latex)
+  if(first_pm[[1]] == "TRUE") latex <- paste(first_pm[[2]], latex)
+
   tryCatch({
     l <- LatexToR(latex)
+    if(first_pm[[1]] == "TRUE") l <- gsub(paste0(first_pm[[2]], " "), "", l, fixed = TRUE)
     l <- replace_all(l, c("leftsquare", "rightsquare"), c("[", "]"))
     l <- reverse_abs(l)
     l <- restore_log(l)
@@ -51,7 +54,6 @@ latex2r <- function(l) {
   })
 }
 
-#' @export
 replace_all <- function(l, vec, vec2) {
   for(i in 1:length(vec)) {
     l <- gsub(paste0(vec[[i]]," *"), vec2[[i]], l, fixed = TRUE)
@@ -61,7 +63,6 @@ replace_all <- function(l, vec, vec2) {
   return(l)
 }
 
-#' @export
 replace_abs <- function(str) {
   c <- 0
   str <- gsub("\\mid", "|", str, fixed = TRUE)
@@ -89,13 +90,11 @@ replace_abs <- function(str) {
   return(str2)
 }
 
-#' @export
 reverse_abs <- function(str) {
   str <- gsub("abs * ", "abs", str, fixed = TRUE)
   return(str)
 }
 
-#' @export
 restore_log <- function(str) {
   str <- gsub("log * ", "log", str, fixed = TRUE)
   str <- gsub("loge * ", "loge", str, fixed = TRUE)
@@ -112,7 +111,6 @@ restore_log <- function(str) {
   return(str)
 }
 
-#' @export
 handle_exp_powers <- function(str) {
   str <- strsplit(str, "")[[1]]
   final_str <- ""
@@ -130,7 +128,6 @@ handle_exp_powers <- function(str) {
   return(final_str)
 }
 
-#' @export
 handle_trig_functions <- function(str) {
   str <- gsub("\\sin", "sin", str, fixed = TRUE)
   str <- gsub("\\cos", "cos", str, fixed = TRUE)
@@ -145,6 +142,12 @@ handle_trig_functions <- function(str) {
   str <- gsub("csc", "\\csc", str, fixed = TRUE)
   str <- gsub("sec", "\\sec", str, fixed = TRUE)
   str <- gsub("cot", "\\cot", str, fixed = TRUE)
+}
+
+handle_first_pm <- function(str) {
+  if(substr(gsub(" ", "", str, fixed = TRUE), 1, 3) == "\\pm") 
+    return(c("TRUE", runif(1)))
+  return(c("FALSE", ""))
 }
 
 #' @export
