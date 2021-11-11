@@ -30,6 +30,7 @@ latex2r <- function(l) {
       return("syntax error")
   }
   latex <- gsub("\\cdot", "*", l, fixed = TRUE)
+  latex <- gsub("w", "\\omega", latex, fixed = TRUE)
   latex <- gsub("\\left[", "\\leftsquare", latex, fixed = TRUE)
   latex <- gsub("[", "\\leftsquare", latex, fixed = TRUE)
   latex <- gsub("\\right]", "\\rightsquare", latex, fixed = TRUE)
